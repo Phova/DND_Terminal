@@ -1,0 +1,536 @@
+/* ================================================================
+   Dragontail GM Client — Parchment Theme
+   ================================================================ */
+
+:root {
+  /* Parchment palette */
+  --parchment-bg: #f4e4c1;
+  --parchment-dark: #d4c4a0;
+  --parchment-light: #faf3e6;
+  --ink: #3b2b1a;
+  --ink-light: #6b5a4a;
+  --ink-faint: #9b8a7a;
+
+  /* Accent colors */
+  --crimson: #8b0000;
+  --crimson-glow: #ff4444;
+  --gold: #b8860b;
+  --gold-glow: #ffd700;
+  --arcane: #4a0e8f;
+  --arcane-glow: #9b59b6;
+  --forest: #2d5a27;
+  --forest-glow: #4caf50;
+
+  /* Alert colors */
+  --danger: #8b0000;
+  --warning: #b8860b;
+  --success: #2d5a27;
+  --info: #1a5276;
+
+  /* Spacing */
+  --gap-sm: 6px;
+  --gap-md: 12px;
+  --gap-lg: 20px;
+  --radius: 6px;
+
+  /* Typography */
+  --font-display: 'Cinzel', Georgia, serif;
+  --font-body: 'MedievalSharp', Georgia, serif;
+  --font-mono: 'Courier New', monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--parchment-bg);
+  overflow: hidden;
+}
+
+/* ---- DM Screen Layout ---- */
+.dm-screen {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(184, 134, 11, 0.08) 0%, transparent 60%),
+    linear-gradient(180deg, var(--parchment-light) 0%, var(--parchment-bg) 30%, var(--parchment-dark) 100%);
+}
+
+/* ---- Header ---- */
+.dm-header {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-lg);
+  padding: 8px 20px;
+  background: linear-gradient(180deg, rgba(59, 43, 26, 0.95), rgba(59, 43, 26, 0.85));
+  color: var(--gold-glow);
+  border-bottom: 2px solid var(--gold);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+  min-height: 56px;
+  flex-shrink: 0;
+}
+
+.dm-brand {
+  display: flex;
+  align-items: baseline;
+  gap: var(--gap-md);
+}
+
+.dm-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--gold-glow);
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+  letter-spacing: 3px;
+}
+
+.dm-subtitle {
+  font-size: 12px;
+  color: var(--parchment-dark);
+  letter-spacing: 2px;
+}
+
+.dm-nav {
+  display: flex;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.dm-nav-btn {
+  padding: 6px 16px;
+  background: transparent;
+  border: 1px solid rgba(255,215,0,0.2);
+  border-radius: var(--radius);
+  color: var(--parchment-dark);
+  font-family: var(--font-display);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.dm-nav-btn:hover {
+  background: rgba(255,215,0,0.1);
+  border-color: var(--gold);
+  color: var(--gold-glow);
+}
+
+.dm-nav-btn.active {
+  background: rgba(255,215,0,0.15);
+  border-color: var(--gold);
+  color: var(--gold-glow);
+  text-shadow: 0 0 6px rgba(255,215,0,0.4);
+}
+
+/* ---- Main Layout ---- */
+.dm-main {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.dm-sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  border-right: 1px solid var(--parchment-dark);
+  background: rgba(0,0,0,0.03);
+  overflow-y: auto;
+  padding: var(--gap-md);
+}
+
+.dm-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--gap-lg);
+}
+
+/* ---- Party Bar ---- */
+.party-bar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-sm);
+}
+
+.party-bar h3 {
+  font-family: var(--font-display);
+  font-size: 14px;
+  color: var(--ink-light);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+}
+
+.party-member {
+  padding: 8px 10px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+  background: var(--parchment-light);
+}
+
+.party-member:hover {
+  border-color: var(--gold);
+  box-shadow: 0 0 6px rgba(184,134,11,0.15);
+}
+
+.party-member.selected {
+  border-color: var(--crimson);
+  background: rgba(139,0,0,0.06);
+}
+
+.party-member-name {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.party-member-meta {
+  font-size: 11px;
+  color: var(--ink-light);
+  margin-top: 2px;
+}
+
+.party-member-hp {
+  margin-top: 4px;
+}
+
+.hp-bar {
+  height: 6px;
+  background: var(--parchment-dark);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.hp-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.3s;
+}
+
+.hp-bar-fill.healthy { background: var(--forest); }
+.hp-bar-fill.wounded { background: var(--warning); }
+.hp-bar-fill.critical { background: var(--danger); }
+
+.party-member-hp-text {
+  font-size: 10px;
+  color: var(--ink-faint);
+  margin-top: 2px;
+  text-align: right;
+}
+
+/* ---- Character Sheet ---- */
+.char-sheet {
+  max-width: 720px;
+  margin: 0 auto;
+  background: var(--parchment-light);
+  border: 1px solid var(--parchment-dark);
+  border-radius: 8px;
+  padding: var(--gap-lg);
+  box-shadow: 2px 2px 12px rgba(0,0,0,0.1);
+}
+
+.char-sheet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: var(--gap-lg);
+  padding-bottom: var(--gap-md);
+  border-bottom: 2px solid var(--gold);
+}
+
+.char-sheet-name {
+  font-family: var(--font-display);
+  font-size: 24px;
+  color: var(--ink);
+}
+
+.char-sheet-meta {
+  font-size: 14px;
+  color: var(--ink-light);
+}
+
+.char-abilities {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--gap-sm);
+  margin-bottom: var(--gap-lg);
+}
+
+.ability-box {
+  text-align: center;
+  padding: 8px 4px;
+  background: white;
+  border: 1px solid var(--parchment-dark);
+  border-radius: var(--radius);
+}
+
+.ability-label {
+  font-family: var(--font-display);
+  font-size: 10px;
+  color: var(--ink-light);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.ability-score {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--ink);
+  font-family: var(--font-display);
+}
+
+.ability-mod {
+  font-size: 13px;
+  color: var(--crimson);
+}
+
+.char-stats {
+  display: flex;
+  gap: var(--gap-lg);
+  margin-bottom: var(--gap-lg);
+  flex-wrap: wrap;
+}
+
+.stat-pill {
+  padding: 6px 14px;
+  background: white;
+  border: 1px solid var(--parchment-dark);
+  border-radius: 20px;
+  font-size: 13px;
+}
+
+.stat-pill strong {
+  font-family: var(--font-display);
+  color: var(--ink);
+}
+
+.char-skills {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px var(--gap-md);
+  margin-bottom: var(--gap-lg);
+}
+
+.skill-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 0;
+  font-size: 12px;
+}
+
+.skill-row.proficient {
+  color: var(--crimson);
+  font-weight: 600;
+}
+
+.skill-mod {
+  font-family: var(--font-mono);
+  color: var(--ink-faint);
+}
+
+/* ---- Dice Roller ---- */
+.dice-roller {
+  margin-top: var(--gap-lg);
+  padding: var(--gap-md);
+  background: var(--parchment-light);
+  border: 1px solid var(--parchment-dark);
+  border-radius: var(--radius);
+}
+
+.dice-roller h3 {
+  font-family: var(--font-display);
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.dice-buttons {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.dice-btn {
+  padding: 6px 12px;
+  background: var(--parchment-bg);
+  border: 1px solid var(--parchment-dark);
+  border-radius: var(--radius);
+  font-family: var(--font-display);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.dice-btn:hover {
+  background: var(--gold);
+  color: white;
+  border-color: var(--gold);
+}
+
+.dice-result {
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: white;
+  border: 1px solid var(--parchment-dark);
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: 14px;
+}
+
+.dice-total {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--crimson);
+  font-family: var(--font-display);
+}
+
+/* ---- Game Clock ---- */
+.game-clock {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--parchment-dark);
+  white-space: nowrap;
+}
+
+/* ---- Monster Panel ---- */
+.monster-panel {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--gap-md);
+}
+
+.monster-card {
+  background: var(--parchment-light);
+  border: 1px solid var(--parchment-dark);
+  border-radius: var(--radius);
+  padding: var(--gap-md);
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+
+.monster-card:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-color: var(--crimson);
+}
+
+.monster-card h4 {
+  font-family: var(--font-display);
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.monster-meta {
+  font-size: 11px;
+  color: var(--ink-faint);
+}
+
+/* ---- Spell Book ---- */
+.spell-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-sm);
+}
+
+.spell-card {
+  background: var(--parchment-light);
+  border: 1px solid var(--parchment-dark);
+  border-radius: var(--radius);
+  padding: var(--gap-md);
+}
+
+.spell-card h4 {
+  font-family: var(--font-display);
+  color: var(--arcane);
+}
+
+.spell-meta {
+  font-size: 11px;
+  color: var(--ink-faint);
+  margin-top: 2px;
+}
+
+/* ---- Placeholder ---- */
+.dm-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--ink-faint);
+}
+
+.dm-hint {
+  text-align: center;
+  color: var(--ink-faint);
+  padding: 40px;
+  font-size: 14px;
+}
+
+.dm-welcome {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.dm-welcome h2 {
+  font-family: var(--font-display);
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.dm-welcome p {
+  color: var(--ink-light);
+  margin-bottom: var(--gap-lg);
+}
+
+/* ---- Utility ---- */
+.btn {
+  padding: 6px 14px;
+  border: 1px solid var(--parchment-dark);
+  border-radius: var(--radius);
+  background: var(--parchment-bg);
+  font-family: var(--font-display);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--ink);
+  color: var(--parchment-light);
+  border-color: var(--ink);
+}
+
+.btn-danger {
+  border-color: var(--crimson);
+  color: var(--crimson);
+}
+
+.btn-danger:hover {
+  background: var(--crimson);
+  color: white;
+}
+
+input, select {
+  padding: 6px 10px;
+  border: 1px solid var(--parchment-dark);
+  border-radius: var(--radius);
+  background: white;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--ink);
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px rgba(184,134,11,0.15);
+}

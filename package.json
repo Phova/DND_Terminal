@@ -1,0 +1,19 @@
+{
+  "name": "dragontail",
+  "version": "0.1.0",
+  "description": "Dragontail Terminal — A DND 5e tabletop RPG companion with retro fantasy terminal aesthetics",
+  "private": true,
+  "scripts": {
+    "install-all": "cd backend && npm install && cd ../gm-client && npm install && cd ../player-client && npm install",
+    "dev": "npx concurrently \"npm run backend\" \"npm run gm-client\" \"npm run player-client\"",
+    "backend": "cd backend && npm run dev",
+    "gm-client": "cd gm-client && npm run dev",
+    "player-client": "cd player-client && npm run dev",
+    "build": "cd backend && npm run build && cd ../gm-client && npm run build && cd ../player-client && npm run build"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  },
+  "author": "",
+  "license": "MIT"
+}

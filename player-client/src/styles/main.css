@@ -1,0 +1,387 @@
+/* ================================================================
+   Dragontail Player Client — Magical Terminal Theme
+   ================================================================ */
+
+:root {
+  --parchment-bg: #1a0a05;
+  --parchment-dark: #0d0503;
+  --parchment-light: #2a1508;
+  --ink: #e8d5a3;
+  --ink-light: #c4a86a;
+  --ink-faint: #8b7355;
+
+  --crimson: #8b0000;
+  --crimson-glow: #ff4444;
+  --gold: #b8860b;
+  --gold-glow: #ffd700;
+  --arcane: #7b2fbe;
+  --arcane-glow: #b06fff;
+  --forest: #2d5a27;
+  --forest-glow: #4caf50;
+
+  --danger: #ff3333;
+  --warning: #ffaa00;
+  --success: #4caf50;
+
+  --gap-sm: 6px;
+  --gap-md: 12px;
+  --gap-lg: 24px;
+  --radius: 4px;
+
+  --font-display: 'Cinzel', Georgia, serif;
+  --font-body: 'MedievalSharp', Georgia, serif;
+  --font-mono: 'Courier New', monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--parchment-bg);
+  overflow: hidden;
+}
+
+/* ---- Terminal Screen ---- */
+.terminal-screen {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(123, 47, 190, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 80%, rgba(184, 134, 11, 0.04) 0%, transparent 50%),
+    linear-gradient(180deg, var(--parchment-bg) 0%, var(--parchment-dark) 100%);
+}
+
+/* ---- Login ---- */
+.login-container {
+  max-width: 400px;
+  margin: auto;
+  padding: 40px;
+  text-align: center;
+}
+
+.login-runes {
+  font-size: 24px;
+  color: var(--gold-glow);
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+  letter-spacing: 12px;
+  margin-bottom: 20px;
+}
+
+.login-title {
+  font-family: var(--font-display);
+  font-size: 32px;
+  color: var(--gold-glow);
+  text-shadow: 0 0 16px rgba(255, 215, 0, 0.3);
+  letter-spacing: 8px;
+  margin-bottom: 8px;
+}
+
+.login-subtitle {
+  font-size: 14px;
+  color: var(--ink-faint);
+  margin-bottom: 32px;
+  font-style: italic;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.login-input {
+  padding: 14px 16px;
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: var(--radius);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  text-align: center;
+  transition: border-color 0.3s;
+}
+
+.login-input::placeholder {
+  color: rgba(232, 213, 163, 0.3);
+}
+
+.login-input:focus {
+  outline: none;
+  border-color: var(--gold-glow);
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.15);
+}
+
+.login-btn {
+  padding: 14px;
+  background: linear-gradient(180deg, rgba(184, 134, 11, 0.3), rgba(184, 134, 11, 0.1));
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: var(--radius);
+  color: var(--gold-glow);
+  font-family: var(--font-display);
+  font-size: 16px;
+  letter-spacing: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.login-btn:hover {
+  background: linear-gradient(180deg, rgba(184, 134, 11, 0.5), rgba(184, 134, 11, 0.2));
+  border-color: var(--gold-glow);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+}
+
+.login-error {
+  color: var(--danger);
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+/* ---- Header ---- */
+.terminal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 20px;
+  background: rgba(0, 0, 0, 0.6);
+  border-bottom: 1px solid rgba(255, 215, 0, 0.15);
+  flex-shrink: 0;
+}
+
+.terminal-brand {
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--gold-glow);
+  letter-spacing: 3px;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.2);
+}
+
+.terminal-char {
+  font-size: 13px;
+  color: var(--ink-faint);
+}
+
+/* ---- Stats Bar ---- */
+.terminal-stats {
+  display: flex;
+  gap: 16px;
+  padding: 6px 20px;
+  background: rgba(0,0,0,0.3);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  flex-shrink: 0;
+  overflow-x: auto;
+}
+
+.tstat {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-light);
+  white-space: nowrap;
+}
+
+/* ---- HP Bar ---- */
+.terminal-hp-bar {
+  height: 4px;
+  background: rgba(255,255,255,0.06);
+  flex-shrink: 0;
+}
+
+.terminal-hp-fill {
+  height: 100%;
+  transition: width 0.3s;
+}
+
+.terminal-hp-fill.healthy { background: var(--forest); }
+.terminal-hp-fill.wounded { background: var(--warning); }
+.terminal-hp-fill.critical { background: var(--danger); }
+
+/* ---- Tabs ---- */
+.terminal-tabs {
+  display: flex;
+  padding: 0 20px;
+  background: rgba(0,0,0,0.2);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  flex-shrink: 0;
+}
+
+.terminal-tab {
+  padding: 10px 20px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--ink-faint);
+  font-family: var(--font-display);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.terminal-tab:hover {
+  color: var(--ink);
+}
+
+.terminal-tab.active {
+  color: var(--gold-glow);
+  border-bottom-color: var(--gold);
+}
+
+/* ---- Main Content ---- */
+.terminal-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--gap-lg);
+}
+
+/* ---- Player Sheet ---- */
+.player-sheet {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.player-abilities {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap-md);
+  margin-bottom: var(--gap-lg);
+}
+
+.player-ability {
+  text-align: center;
+  padding: 16px 8px;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--radius);
+}
+
+.player-ability-label {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 11px;
+  color: var(--ink-faint);
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+}
+
+.player-ability-score {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 28px;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.player-ability-mod {
+  display: block;
+  font-size: 14px;
+  color: var(--gold-glow);
+  font-family: var(--font-mono);
+  margin-top: 2px;
+}
+
+.player-info p {
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-size: 14px;
+}
+
+.player-info strong {
+  font-family: var(--font-display);
+  color: var(--gold-glow);
+  margin-right: 8px;
+}
+
+.player-story {
+  margin-top: var(--gap-lg);
+  padding: var(--gap-md);
+  background: rgba(0,0,0,0.2);
+  border-left: 3px solid var(--gold);
+  border-radius: var(--radius);
+}
+
+.player-story h4 {
+  font-family: var(--font-display);
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.player-story p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--ink-light);
+  font-style: italic;
+}
+
+/* ---- Spells ---- */
+.player-spell-slots {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.player-slot {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--arcane-glow);
+  letter-spacing: 2px;
+}
+
+.player-spell-list {
+  list-style: none;
+  margin-top: 8px;
+}
+
+.player-spell-list li {
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-size: 14px;
+  color: var(--ink-light);
+}
+
+.player-spell-list li::before {
+  content: '✦ ';
+  color: var(--arcane-glow);
+}
+
+/* ---- Equipment ---- */
+.player-item-list {
+  list-style: none;
+  margin-top: 8px;
+}
+
+.player-item-list li {
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.player-item-list li::before {
+  content: '⚔ ';
+  color: var(--ink-faint);
+}
+
+/* ---- Footer ---- */
+.terminal-footer {
+  text-align: center;
+  padding: 8px;
+  font-family: var(--font-display);
+  font-size: 12px;
+  color: var(--ink-faint);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  flex-shrink: 0;
+}
+
+/* ---- Shared hints ---- */
+.dm-hint {
+  text-align: center;
+  color: var(--ink-faint);
+  padding: 40px;
+  font-size: 14px;
+  font-style: italic;
+}
