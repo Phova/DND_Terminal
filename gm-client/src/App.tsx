@@ -6,6 +6,8 @@ import MonsterPanel from './components/MonsterPanel';
 import SpellBook from './components/SpellBook';
 import PartyBar from './components/PartyBar';
 import InitiativeTracker from './components/InitiativeTracker';
+import MessageHub from './components/MessageHub';
+import BroadcastView from './components/BroadcastView';
 import GameClock from './components/GameClock';
 
 interface Character {
@@ -30,7 +32,7 @@ interface Character {
   personality?: string;
 }
 
-type DMView = 'party' | 'characters' | 'monsters' | 'spells' | 'encounters' | 'apps';
+type DMView = 'party' | 'characters' | 'monsters' | 'spells' | 'encounters' | 'messages' | 'broadcast' | 'apps';
 
 export default function App() {
   const [socket, setSocket] = useState<Socket | null>(null);
@@ -82,7 +84,7 @@ export default function App() {
         </div>
         <GameClock />
         <nav className="dm-nav">
-          {(['party', 'characters', 'monsters', 'spells', 'encounters', 'apps'] as DMView[]).map(v => (
+          {(['party', 'characters', 'monsters', 'spells', 'encounters', 'messages', 'broadcast', 'apps'] as DMView[]).map(v => (
             <button
               key={v}
               className={`dm-nav-btn ${view === v ? 'active' : ''}`}
@@ -90,7 +92,7 @@ export default function App() {
             >
               {{
                 party: '队伍', characters: '角色卡', monsters: '怪物',
-                spells: '法术', encounters: '遭遇', apps: '卷轴'
+                spells: '法术', encounters: '遭遇', messages: '传讯', broadcast: '广播', apps: '卷轴'
               }[v]}
             </button>
           ))}
@@ -118,6 +120,12 @@ export default function App() {
           {view === 'spells' && <SpellBook />}
           {view === 'encounters' && (
             <InitiativeTracker socket={socket} characters={characters} />
+          )}
+          {view === 'messages' && (
+            <MessageHub socket={socket} characters={characters} />
+          )}
+          {view === 'broadcast' && (
+            <BroadcastView socket={socket} characters={characters} />
           )}
           {view === 'apps' && (
             <div className="dm-placeholder">📜 卷轴管理 — 即将到来</div>

@@ -383,6 +383,10 @@ export enum SocketEvent {
   MESSAGE_CREATED = 'message:created',
   MESSAGE_UPDATED = 'message:updated',
   MESSAGE_DELETED = 'message:deleted',
+  MESSAGE_READ_STATUS_CHANGED = 'message:read_status_changed',
+
+  // Broadcast events
+  BROADCAST_SENT = 'broadcast:sent',
 
   // Dice events
   DICE_ROLLED = 'dice:rolled',

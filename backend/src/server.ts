@@ -15,6 +15,8 @@ import diceRoutes from './routes/dice';
 import appRoutes from './routes/apps';
 import gameTimeRoutes from './routes/gameTime';
 import settingsRoutes from './routes/settings';
+import messageRoutes from './routes/messages';
+import broadcastRoutes from './routes/broadcast';
 
 const app = express();
 const server = http.createServer(app);
@@ -49,6 +51,8 @@ async function startServer() {
   app.use('/api/apps', appRoutes);
   app.use('/api/game-time', gameTimeRoutes);
   app.use('/api/settings', settingsRoutes);
+  app.use('/api/messages', messageRoutes);
+  app.use('/api/broadcast', broadcastRoutes);
 
   app.get('/api/health', (_req, res) => {
     res.json({ status: 'ok', name: 'Dragontail Backend', timestamp: new Date().toISOString() });
