@@ -1,0 +1,13 @@
+{
+  "name": "dragontail-launcher",
+  "version": "0.1.0",
+  "description": "Dragontail Terminal Electron Launcher",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron ."
+  },
+  "dependencies": {
+    "electron": "^33.0.0"
+  }
+}

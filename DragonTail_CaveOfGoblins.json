@@ -1,0 +1,181 @@
+{
+  "adventure": {
+    "title": "地精洞穴的阴影",
+    "description": "一支勇敢的冒险队伍接到镇长的请求——村庄附近的地精洞穴中出现了异常活动。地精们变得异常凶猛，据说有一只食人魔在指挥它们。玩家需要潜入洞穴，击败地精和食人魔首领，解救被困的村民。",
+    "level": 1,
+    "players": "2-4",
+    "estimatedTime": "2-3 小时"
+  },
+  "prebuiltCharacters": [
+    {
+      "username": "aragorn",
+      "password": "strider",
+      "first_name": "阿拉贡",
+      "last_name": "",
+      "title": "游侠",
+      "race": "人类",
+      "class": "游侠",
+      "level": 3,
+      "abilities": { "str": 16, "dex": 14, "con": 14, "int": 12, "wis": 13, "cha": 10 },
+      "hp_max": 28,
+      "hp_current": 28,
+      "ac": 15,
+      "initiative_bonus": 2,
+      "speed": 30,
+      "darkvision": 0,
+      "passive_perception": 13,
+      "skill_proficiencies": ["perception", "survival", "stealth", "athletics"],
+      "saving_throw_proficiencies": ["str", "dex"],
+      "languages": ["通用语", "精灵语"],
+      "background_story": "北方游侠，在荒野中追踪地精的踪迹来到了这个村庄。",
+      "personality": "沉默寡言但意志坚定，对邪恶绝不手软。"
+    },
+    {
+      "username": "legolas",
+      "password": "greenleaf",
+      "first_name": "莱戈拉斯",
+      "last_name": "",
+      "title": "弓箭手",
+      "race": "精灵",
+      "class": "游荡者",
+      "level": 3,
+      "abilities": { "str": 10, "dex": 18, "con": 12, "int": 14, "wis": 14, "cha": 12 },
+      "hp_max": 21,
+      "hp_current": 21,
+      "ac": 16,
+      "initiative_bonus": 4,
+      "speed": 35,
+      "darkvision": 60,
+      "passive_perception": 14,
+      "skill_proficiencies": ["perception", "stealth", "acrobatics", "investigation"],
+      "saving_throw_proficiencies": ["dex", "int"],
+      "languages": ["通用语", "精灵语", "木族语"],
+      "background_story": "幽暗密林的精灵斥候，擅长远程攻击与潜行侦察。",
+      "personality": "优雅而警觉，对自然有着深厚的联系。"
+    },
+    {
+      "username": "gimli",
+      "password": "baruk",
+      "first_name": "金雳",
+      "last_name": "",
+      "title": "战士",
+      "race": "矮人",
+      "class": "战士",
+      "level": 3,
+      "abilities": { "str": 17, "dex": 12, "con": 16, "int": 10, "wis": 10, "cha": 8 },
+      "hp_max": 31,
+      "hp_current": 31,
+      "ac": 18,
+      "initiative_bonus": 1,
+      "speed": 25,
+      "darkvision": 60,
+      "passive_perception": 10,
+      "skill_proficiencies": ["athletics", "intimidation"],
+      "saving_throw_proficiencies": ["str", "con"],
+      "languages": ["通用语", "矮人语"],
+      "background_story": "来自孤山的矮人战士，手持战斧寻找荣耀与财宝。",
+      "personality": "勇猛直率，对战斗充满热情，对洞穴了如指掌。"
+    },
+    {
+      "username": "gandalf",
+      "password": "greyhame",
+      "first_name": "甘道夫",
+      "last_name": "灰袍",
+      "title": "大法师",
+      "race": "人类",
+      "class": "法师",
+      "level": 5,
+      "abilities": { "str": 10, "dex": 14, "con": 12, "int": 18, "wis": 13, "cha": 8 },
+      "hp_max": 32,
+      "hp_current": 32,
+      "ac": 15,
+      "initiative_bonus": 2,
+      "speed": 30,
+      "darkvision": 0,
+      "passive_perception": 13,
+      "skill_proficiencies": ["arcana", "history", "investigation", "insight"],
+      "saving_throw_proficiencies": ["int", "wis"],
+      "languages": ["通用语", "精灵语", "龙语"],
+      "spell_ability": "int",
+      "spell_slots": { "1": { "max": 4, "used": 0 }, "2": { "max": 3, "used": 0 }, "3": { "max": 2, "used": 0 } },
+      "known_spells": ["spell-magic-missile", "spell-mage-armor", "spell-shield", "spell-fireball"],
+      "background_story": "一位来自遥远西方的伊斯塔力，被派遣到中土对抗黑暗。",
+      "personality": "睿智、耐心，但在面对愚行时偶尔暴躁。"
+    }
+  ],
+  "encounters": [
+    {
+      "name": "洞穴入口 — 地精哨兵",
+      "description": "两只地精在洞穴入口放哨。玩家可以通过潜行或远程攻击先发制人。",
+      "combatants": [
+        { "monsterId": "monster-goblin", "name": "地精哨兵 A", "quantity": 1 },
+        { "monsterId": "monster-goblin", "name": "地精哨兵 B", "quantity": 1 }
+      ]
+    },
+    {
+      "name": "洞穴大厅 — 地精部落",
+      "description": "洞穴深处，4只地精围坐在篝火旁。它们警觉性较低，玩家可以尝试潜行靠近。",
+      "combatants": [
+        { "monsterId": "monster-goblin", "name": "地精", "quantity": 4 }
+      ]
+    },
+    {
+      "name": "洞穴深处 — 食人魔首领",
+      "description": "食人魔首领在洞穴最深处，旁边还有两只地精护卫和一只僵尸。这是本次冒险的最终战斗。",
+      "combatants": [
+        { "monsterId": "monster-ogre", "name": "食人魔首领", "quantity": 1 },
+        { "monsterId": "monster-goblin", "name": "地精护卫 A", "quantity": 1 },
+        { "monsterId": "monster-goblin", "name": "地精护卫 B", "quantity": 1 },
+        { "monsterId": "monster-zombie", "name": "僵尸仆从", "quantity": 1 }
+      ]
+    }
+  ],
+  "battleMaps": {
+    "caveEntrance": {
+      "width": 20,
+      "height": 15,
+      "description": "洞穴入口区域。左上方是洞穴入口，右下方通向深处。周围有灌木丛提供半掩护。",
+      "tokens": [
+        { "monsterId": "monster-goblin", "name": "地精哨兵 A", "x": 14, "y": 4 },
+        { "monsterId": "monster-goblin", "name": "地精哨兵 B", "x": 16, "y": 5 }
+      ]
+    },
+    "caveHall": {
+      "width": 24,
+      "height": 18,
+      "description": "洞穴大厅。中央有篝火提供明亮光照，四角有石笋提供掩护。",
+      "tokens": [
+        { "monsterId": "monster-goblin", "name": "地精", "x": 10, "y": 8 },
+        { "monsterId": "monster-goblin", "name": "地精", "x": 12, "y": 7 },
+        { "monsterId": "monster-goblin", "name": "地精", "x": 11, "y": 10 },
+        { "monsterId": "monster-goblin", "name": "地精", "x": 14, "y": 9 }
+      ]
+    },
+    "caveBoss": {
+      "width": 28,
+      "height": 20,
+      "description": "食人魔巢穴。中央是开阔区域，食人魔站在宝座旁。左侧有铁笼关着被俘的村民。",
+      "tokens": [
+        { "monsterId": "monster-ogre", "name": "食人魔首领", "x": 14, "y": 8 },
+        { "monsterId": "monster-goblin", "name": "地精护卫 A", "x": 10, "y": 6 },
+        { "monsterId": "monster-goblin", "name": "地精护卫 B", "x": 18, "y": 6 },
+        { "monsterId": "monster-zombie", "name": "僵尸仆从", "x": 14, "y": 14 }
+      ]
+    }
+  },
+  "lootTable": {
+    "caveEntrance": [
+      { "name": "金币", "quantity": "2d10", "description": "散落在地精尸体旁" },
+      { "name": "治疗药水", "quantity": 1, "description": "地精哨兵身上搜出的" }
+    ],
+    "caveHall": [
+      { "name": "金币", "quantity": "4d10", "description": "篝火旁的布袋" },
+      { "name": "+1 短剑", "quantity": 1, "description": "插在一具骸骨上" }
+    ],
+    "caveBoss": [
+      { "name": "金币", "quantity": "10d10", "description": "食人魔宝座下的宝箱" },
+      { "name": "治疗药水", "quantity": 2, "description": "宝箱中找到" },
+      { "name": "防护戒指 +1", "quantity": 1, "description": "食人魔首领手上戴着，闪闪发光" }
+    ]
+  }
+}

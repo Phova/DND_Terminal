@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dragontail Launcher</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Georgia', serif;
+      background: #1a0a05;
+      color: #e8d5a3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .launcher {
+      width: 560px;
+      padding: 32px;
+      text-align: center;
+      background: radial-gradient(ellipse at 50% 0%, rgba(184,134,11,0.08) 0%, transparent 60%);
+      border: 1px solid rgba(184,134,11,0.2);
+      border-radius: 12px;
+    }
+    h1 {
+      font-size: 28px;
+      color: #ffd700;
+      text-shadow: 0 0 12px rgba(255,215,0,0.3);
+      letter-spacing: 6px;
+      margin-bottom: 4px;
+    }
+    .subtitle {
+      font-size: 12px;
+      color: #8b7355;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+    .services {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+      justify-content: center;
+    }
+    .service-card {
+      width: 150px;
+      padding: 16px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8px;
+      text-align: center;
+    }
+    .service-card h3 {
+      font-size: 13px;
+      color: #c4a86a;
+      margin-bottom: 8px;
+    }
+    .service-card .port {
+      font-size: 11px;
+      color: #8b7355;
+      font-family: monospace;
+      margin-bottom: 8px;
+    }
+    button {
+      padding: 8px 16px;
+      background: rgba(184,134,11,0.2);
+      border: 1px solid rgba(255,215,0,0.3);
+      border-radius: 4px;
+      color: #ffd700;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      letter-spacing: 2px;
+    }
+    button:hover { background: rgba(184,134,11,0.4); }
+    button.running { background: rgba(45,90,39,0.3); border-color: #4caf50; color: #4caf50; }
+    .stop-all {
+      margin-top: 16px;
+      padding: 10px 32px;
+      background: rgba(139,0,0,0.2);
+      border-color: rgba(255,60,0,0.3);
+      color: #ff4444;
+    }
+    .logs {
+      margin-top: 16px;
+      max-height: 100px;
+      overflow-y: auto;
+      font-family: monospace;
+      font-size: 10px;
+      color: rgba(232,213,163,0.5);
+      text-align: left;
+      background: rgba(0,0,0,0.3);
+      border-radius: 4px;
+      padding: 8px;
+    }
+    .logs div { padding: 1px 0; }
+  </style>
+</head>
+<body>
+  <div class="launcher">
+    <h1>DRAGONTAIL</h1>
+    <p class="subtitle">越过龙脊山脉，踏入未知领域...</p>
+
+    <div class="services">
+      <div class="service-card">
+        <h3>后端 API</h3>
+        <p class="port">Port 3100</p>
+        <button id="btn-backend" onclick="window.dragontail.startBackend()">启动</button>
+      </div>
+      <div class="service-card">
+        <h3>GM 帷幕</h3>
+        <p class="port">Port 5173</p>
+        <button id="btn-gm" onclick="window.dragontail.startGM()">启动</button>
+      </div>
+      <div class="service-card">
+        <h3>玩家终端</h3>
+        <p class="port">Port 5174</p>
+        <button id="btn-player" onclick="window.dragontail.startPlayer()">启动</button>
+      </div>
+    </div>
+
+    <button class="stop-all" onclick="window.dragontail.stopAll()">⚔ 停止全部</button>
+
+    <div class="logs" id="logs"></div>
+  </div>
+
+  <script>
+    if (window.dragontail) {
+      window.dragontail.onLog((data) => {
+        const logs = document.getElementById('logs');
+        const div = document.createElement('div');
+        div.textContent = `[${data.service}] ${data.text}`;
+        logs.appendChild(div);
+        logs.scrollTop = logs.scrollHeight;
+      });
+
+      window.dragontail.onStatus((data) => {
+        const map = { backend: 'btn-backend', gm: 'btn-gm', player: 'btn-player' };
+        if (data.service === 'all' && !data.running) {
+          Object.values(map).forEach(id => {
+            const btn = document.getElementById(id);
+            if (btn) { btn.textContent = '启动'; btn.className = ''; }
+          });
+          return;
+        }
+        const btn = document.getElementById(map[data.service]);
+        if (btn) {
+          btn.textContent = data.running ? '运行中' : '启动';
+          btn.className = data.running ? 'running' : '';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
